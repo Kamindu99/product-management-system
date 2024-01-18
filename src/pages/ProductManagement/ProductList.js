@@ -4,6 +4,7 @@ function ProductList() {
     return (
         <div>
             ProductList
+            Table Here
         </div>
     )
 }
