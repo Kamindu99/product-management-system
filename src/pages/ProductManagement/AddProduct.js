@@ -34,7 +34,7 @@ function AddProduct() {
     return (
         <div>
             <div>
-                <form onSubmit={{ sendData }}>
+                <form onSubmit={sendData}>
                     <h1><u>Add products</u></h1>
                     <div className="mb-3">
                         <label for="productCode" className="form-label">productCode</label>
