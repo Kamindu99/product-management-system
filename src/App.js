@@ -11,7 +11,7 @@ function App() {
       <div style={{ minHeight: '50vh' }}>
         <Router>
           <Routes>
-            <Route path="/product" element={<ProductList />} />
+            <Route path="/" element={<ProductList />} />
             <Route path="/add" element={<AddProduct />} />
 
           </Routes>
