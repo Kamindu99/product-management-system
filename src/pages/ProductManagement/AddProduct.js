@@ -22,7 +22,7 @@ function AddProduct() {
         axios.post(`http://localhost:8000/product/add`, newProduct).then(() => {
             console.log("product added");
             alert("product added");
-            window.location.replace("/");
+            window.location.replace("/product");
 
         }).catch((err) => {
             alert(err);
