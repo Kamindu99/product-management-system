@@ -1,9 +1,10 @@
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { ProductList } from "./pages";
-import AddProduct from "./pages/ProductManagement/AddProduct";
-import UpdateProducts from "./pages/ProductManagement/UpdateProducts";
+// import { ProductList } from "./pages";
+import AddProduct from "./pages/ProductManagement/AddProduct/AddProduct";
+import UpdateProducts from "./pages/ProductManagement/UpdateProduct/UpdateProducts";
+import ProductList from "./pages/ProductManagement/ProductList/ProductList";
 function App() {
   return (
     <div >

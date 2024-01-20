@@ -6,7 +6,7 @@ function UpdateProducts() {
 
 
     const { id } = useParams();
-    
+    const [productCode, setProductCode] = useState("")
     const [productName, setProductName] = useState("");
 
     const [price, setPrice] = useState("");
@@ -14,33 +14,37 @@ function UpdateProducts() {
     const update = (e) => {
         e.preventDefault();
         const updateProduct = {
+            productCode,
             productName,
             price,
             qty
         };
         console.log(updateProduct);
-        axios.put(`http://localhost:8000/product/update/${id}`, updateProduct).then((res) => {
-            console.log(`updated`, res);
-            alert(`updated`);
+        axios.put(`http://localhost:8000/product/update/${id}`, updateProduct)
+            .then((res) => {
+                console.log(`updated`, res);
+                alert(`updated`);
 
-            setProductName("");
-            setPrice("");
-            setQty("");
+                setProductName("");
+                setPrice("");
+                setQty("");
 
-            window.location.replace(`/product`);
-        }).catch((err) => {
-            console.log(err);
-            alert(err);
-        });
+                window.location.replace(`/product`);
+            }).catch((err) => {
+                console.log(err);
+                alert(err);
+            });
     }
     const getProduct = () => {
         axios.get(`http://localhost:8000/product/get/${id}`).then((res) => {
+
+            setProductCode(res.data.product.productCode)
             setProductName(res.data.product.productName);
             setPrice(res.data.product.price);
             setQty(res.data.product.qty);
 
         }).catch((err) => {
-            alert(`error in fetch`, err);
+            alert(err);
         })
 
     }
@@ -56,6 +60,18 @@ function UpdateProducts() {
 
 
         <form onSubmit={update}>
+
+
+            <div class="mb-3">
+
+
+                <label for="productCode" class="form-label">productCodee</label>
+                <input type="text" class="form-control" id="productCode" onChange={(e) => {
+                    setProductCode(e.target.value)
+                }}
+                    value={productCode}
+                />
+            </div>
             <div class="mb-3">
 
 

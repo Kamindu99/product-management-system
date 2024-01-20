@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import './AddProduct.css';
 function AddProduct() {
     const [productCode, setProductCode] = useState("");
 
@@ -10,8 +11,10 @@ function AddProduct() {
     async function sendData(e) {
         e.preventDefault();
 
+        const concatenateCode = productCode ? `PR${productCode}` : '';
+
         const newProduct = {
-            productCode,
+            productCode: concatenateCode,
             productName,
             price,
             qty
