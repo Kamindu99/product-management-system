@@ -7,6 +7,7 @@ function AddProduct() {
     const [productName, setProductName] = useState("");
     const [price, setPrice] = useState("");
     const [qty, setQty] = useState("");
+    const [imageUrl, setImageUrl] = useState("")
 
     async function sendData(e) {
         e.preventDefault();
@@ -17,7 +18,8 @@ function AddProduct() {
             productCode: concatenateCode,
             productName,
             price,
-            qty
+            qty,
+            imageUrl
 
         }
 
@@ -66,6 +68,14 @@ function AddProduct() {
                             setQty(e.target.value)
                         }} />
                     </div>
+                    <div className="mb-3">
+                        <label for="imageUrl" className="form-label">imageUrl</label>
+                        <input type="text" className="form-control" id="imageUrl" onChange={(e) => {
+                            setImageUrl(e.target.value)
+                        }} />
+                    </div>
+
+
 
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

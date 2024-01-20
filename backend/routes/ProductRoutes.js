@@ -23,15 +23,16 @@ router.route("/display").get((req, res) => {
 })
 router.route("/update/:id").put(async (req, res) => {
     let productId = req.params.id;
-    const { productCode, productName, price, qty } = req.body;
+    const { productCode, productName, price, qty, imageUrl } = req.body;
     const updatedProduct = {
         productCode,
         productName,
         price,
-        qty
+        qty,
+        imageUrl
     };
     const update = await Product.findByIdAndUpdate(productId, updatedProduct).then((response) => {
-        res.status(200).send({ status: "Updated",response });
+        res.status(200).send({ status: "Updated", response });
 
     }).catch((err) => {
         res.status(500).send({ status: "error in update", err });
@@ -51,7 +52,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 router.route("/get/:id").get(async (req, res) => {
     let productId = req.params.id;
     await Product.findById(productId).then((response) => {
-        res.status(200).send({ status: "fetched",response });
+        res.status(200).send({ status: "fetched", response });
 
     }).catch((err) => {
         res.status(500).send({ status: "error in fetch", err });

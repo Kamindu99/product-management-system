@@ -44,10 +44,12 @@ function ProductList() {
                 {product.map((product, index) => (
                     <div key={product._id} className="col-sm-2 mb-3">
                         <div className="card">
+                            <img src={product.imageUrl} alt={product.productName} className="card-img-top" />
+
                             <div className="card-body">
                                 <h5 className="card-title">{product.productName}</h5>
                                 <p className="card-text">
-                                    <strong>Product Code:</strong> {index + 1} <br />
+                                    <strong>Product Code:</strong> {`${index + 1} -${product.productCode}`}<br />
                                     <strong>Price:</strong> {product.price} <br />
                                     <strong>Qty:</strong> {product.qty}
                                 </p>
