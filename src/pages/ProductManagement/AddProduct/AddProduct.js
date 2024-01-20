@@ -52,7 +52,7 @@ function AddProduct() {
                         <label for="productName" className="form-label">productName</label>
                         <input type="text" className="form-control" id="productName" onChange={(e) => {
                             setProductName(e.target.value)
-                        }} />
+                        }} required />
                     </div>
 
                     <div className="mb-3">
