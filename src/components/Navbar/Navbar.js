@@ -40,6 +40,10 @@ const Navbar = () => {
                             <a href='/product' className={`nav-link me-3 nav-link-a-text `}>Products</a>
                         </li>
 
+                        <li className="nav-item">
+                            <a href='/add' className={`nav-link me-3 nav-link-a-text `}>Add Product</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

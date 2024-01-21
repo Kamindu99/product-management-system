@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-
+app.use(express.json());
 const PORT = 8000;
 const DB_URL = 'mongodb+srv://Kamindu_99:123@mernapp.ffeez.mongodb.net/product_db?retryWrites=true&w=majority';
 
