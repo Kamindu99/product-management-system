@@ -3,8 +3,7 @@ import React from 'react'
 function ProductList() {
     return (
         <div>
-            ProductList
-            Table Here
+            jjjjjjjjjjjjj
         </div>
     )
 }
