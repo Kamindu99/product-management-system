@@ -37,7 +37,7 @@ function AddProduct() {
     }
 
     return (
-        <div>
+        <div className='addProduct'>
             <div>
                 <form onSubmit={sendData}>
                     <h1><u>Add products</u></h1>

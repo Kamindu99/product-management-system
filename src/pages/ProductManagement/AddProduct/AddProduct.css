@@ -1,19 +1,17 @@
-form {
-    padding: 120px;
+.addProduct {}
 
+.addProduct form {
+    padding: 120px;
     height: fit-content;
     font-size: 16px;
     margin-bottom: 10px;
     border: none;
     border-bottom: 8px solid #a86363;
     outline: none;
-
     top: 50%;
     left: 50%;
-
 }
 
-h1 {
+.addProduct h1 {
     text-align: center;
-
 }
