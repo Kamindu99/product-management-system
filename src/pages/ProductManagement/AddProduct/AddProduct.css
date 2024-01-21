@@ -1,7 +1,7 @@
 .addProduct {}
 
 .addProduct form {
-    padding: 120px;
+    /* padding: 120px;
     height: fit-content;
     font-size: 16px;
     margin-bottom: 10px;
@@ -9,9 +9,36 @@
     border-bottom: 8px solid #a86363;
     outline: none;
     top: 50%;
-    left: 50%;
+    left: 50%; */
+
+
+
+
+
+
+    width: 450px;
+    padding: 30px;
+    margin: 40px auto;
+    background: #FFF;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 }
+
+
+
+
+
+
 
 .addProduct h1 {
     text-align: center;
+    background-color: aqua;
+    padding: 25px;
 }
+
+
+
