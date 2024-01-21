@@ -5,6 +5,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AddProduct from "./pages/ProductManagement/AddProduct/AddProduct";
 import UpdateProducts from "./pages/ProductManagement/UpdateProduct/UpdateProducts";
 import ProductList from "./pages/ProductManagement/ProductList/ProductList";
+import UserRegistration from "./pages/UserManagement/UserRegistration";
+import UserLogin from "./pages/UserManagement/UserLogin";
 function App() {
   return (
     <div >
@@ -16,6 +18,8 @@ function App() {
             <Route path="/add" element={<AddProduct />} />
             <Route path="update/:id" element={<UpdateProducts />} />
 
+            <Route path="/user-management/register" element={<UserRegistration />} />
+            <Route path="/user-management/login" element={<UserLogin />} />
           </Routes>
         </Router>
       </div>
