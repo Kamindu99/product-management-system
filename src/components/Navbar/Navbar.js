@@ -44,6 +44,10 @@ const Navbar = () => {
                             <a href='/add' className={`nav-link me-3 nav-link-a-text `}>Add Product</a>
                         </li>
 
+                        <li className="nav-item">
+                            <a href='/user-management/register' className={`nav-link me-3 nav-link-a-text `}>User Registration</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

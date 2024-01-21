@@ -20,4 +20,16 @@ router.route("/").get((req, res) => {
     })
 })
 
+router.route("/login").post((req, res) => {
+    User.find({ userName: req.body.userName, password: req.body.password }).then((users) => {
+        if (users.length > 0) {
+            res.json({ success: true });
+        } else {
+            res.json({ success: false });
+        }
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
 module.exports = router;
