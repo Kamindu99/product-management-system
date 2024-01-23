@@ -19,6 +19,9 @@ function UserLogin() {
         axios.post('http://localhost:8000/api/user-management/login', user).then((res) => {
             if (res.data.success) {
                 alert("Login Success");
+                localStorage.setItem('token', res.data.accessToken);
+                localStorage.setItem('refreshtoken', res.data.refreshToken);
+                localStorage.setItem('name', res.data.firstName);
                 setUser(initUserDetails);
                 window.location = "/user-management/dashboard";
             } else {

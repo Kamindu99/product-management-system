@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import axios from 'axios';
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -13,6 +15,24 @@ const Navbar = () => {
             }
         })
     }, [])
+
+    const handleSubmit = () => {
+        let refreshtoken = {
+            refreshToken: localStorage.getItem('refreshtoken')
+        }
+        axios.post('http://localhost:8000/api/user-management/logout', refreshtoken).then((res) => {
+            if (res.data.success) {
+                alert("Logout Success");
+                localStorage.clear();
+                window.location.replace("/user-management/login");
+            } else {
+                alert("Login Failed");
+            }
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
     return (
         <nav className={`navbar navbar-expand-lg navbar-light ${isSticky ? "stickynav" : "normalnav"}`} >
@@ -44,9 +64,44 @@ const Navbar = () => {
                             <a href='/add' className={`nav-link me-3 nav-link-a-text `}>Add Product</a>
                         </li>
 
-                        <li className="nav-item">
-                            <a href='/user-management/register' className={`nav-link me-3 nav-link-a-text `}>User Registration</a>
-                        </li>
+                        {localStorage.getItem('token') ?
+                            <li className="nav-item dropdown" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                                <a
+                                    className={`nav-link nav-link-a-text me-3 dropdown-toggle`}
+                                    type="button"
+                                    role="button"
+                                    id="downLoadDropdown"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded={isDropdownOpen}
+                                >
+                                    {localStorage.getItem('name')}
+                                </a>
+                                <ul className={`dropdown-menu${isDropdownOpen ? ' show' : ''}`} aria-labelledby="downLoadDropdown">
+                                    <li>
+                                        <a
+                                            className={`dropdown-item`}
+                                            href="/user-management/user-profile"
+                                        >
+                                            User Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className={`dropdown-item`}
+                                            onClick={handleSubmit}
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            LogOut
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            :
+                            <li className="nav-item">
+                                <a href='/user-management/login' className={`nav-link me-3 nav-link-a-text `}>Login</a>
+                            </li>
+                        }
 
                     </ul>
                 </div>

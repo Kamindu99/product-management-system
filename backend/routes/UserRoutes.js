@@ -27,7 +27,7 @@ router.route("/login").post(async (req, res) => {
 
         if (users.length > 0) {
             const data = { id: users[0].id, firstName: users[0].firstName, lastName: users[0].lastName };
-            const accessToken = jwt.sign(data, 'abcd1234', { expiresIn: '30s' });
+            const accessToken = jwt.sign(data, 'abcd1234', { expiresIn: '300s' });
             const refreshToken = jwt.sign(data, '1234abcd', { expiresIn: '24h' });
 
             await User.findOneAndUpdate({ _id: users[0]._id }, { $set: { refreshToken: refreshToken } });
