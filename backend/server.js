@@ -28,4 +28,4 @@ const productRoute = require('./routes/ProductRoutes');
 app.use("/product", productRoute);
 
 const userRoute = require('./routes/UserRoutes');
-app.use("/user-management", userRoute);
+app.use("/api/user-management", userRoute);
