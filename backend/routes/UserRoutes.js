@@ -21,25 +21,107 @@ router.route("/").get((req, res) => {
     })
 })
 
-router.route("/login").post((req, res) => {
-    User.find({ userName: req.body.userName, password: req.body.password }).then((users) => {
+router.route("/login").post(async (req, res) => {
+    try {
+        const users = await User.find({ userName: req.body.userName, password: req.body.password });
 
         if (users.length > 0) {
+            const data = { id: users[0].id, firstName: users[0].firstName, lastName: users[0].lastName };
+            const accessToken = jwt.sign(data, 'abcd1234', { expiresIn: '30s' });
+            const refreshToken = jwt.sign(data, '1234abcd', { expiresIn: '24h' });
 
-            const data = { id: users[0].id, firstName: users[0].firstName, lastName: users[0].lastName }
-            const token = jwt.sign(data, 'abcd1234')
+            await User.findOneAndUpdate({ _id: users[0]._id }, { $set: { refreshToken: refreshToken } });
 
             res.json({
                 success: true,
                 firstName: users[0].firstName,
                 lastName: users[0].lastName,
-                token: token
+                accessToken: accessToken,
+                refreshToken: refreshToken
             });
-
         } else {
             res.json({ success: false, message: "Invalid Username or Password" });
         }
+    } catch (err) {
+        console.log(err);
+        res.json({ success: false, message: "An error occurred during login" });
+    }
+});
 
+router.route("/refresh").post((req, res) => {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken == null) return res.sendStatus(401)
+    jwt.verify(refreshToken, '1234abcd', (err, user) => {
+        if (err) return res.sendStatus(403)
+        const accessToken = jwt.sign({ id: user.id, firstName: user.firstName, lastName: user.lastName }, 'abcd1234', { expiresIn: '20s' })
+        res.json({ accessToken: accessToken })
+    })
+})
+
+router.route("/logout").post(async (req, res) => {
+    const refreshToken = req.body.refreshToken;
+    if (refreshToken == null) return res.sendStatus(401);
+
+    try {
+        const decodedUser = jwt.verify(refreshToken, '1234abcd');
+        const user = await User.findOne({ _id: decodedUser.id });
+
+        if (user) {
+            if (user.refreshToken == null || user.refreshToken == '') {
+                return res.status(403).json({
+                    message: "User already logged out. Invalid Refresh Token"
+                })
+            }
+            else {
+                if (refreshToken === user.refreshToken) {
+                    user.refreshToken = null;
+                    await user.save();
+
+                    res.json({ success: true, message: "Logged Out" });
+                } else {
+                    return res.status(403).json({
+                        message: "Invalid Refresh Token"
+                    })
+                }
+            }
+        } else {
+            return res.status(403).json({
+                message: "Invalid Refresh Token"
+            })
+        }
+    } catch (err) {
+        res.sendStatus(403);
+    }
+});
+
+
+router.route("/:id").get((req, res) => {
+    User.findById(req.params.id).then((user) => {
+        res.json(user);
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+router.route("/:id").delete((req, res) => {
+    User.findByIdAndDelete(req.params.id).then(() => {
+        res.json("User Deleted");
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+router.route("/update/:id").post((req, res) => {
+    User.findById(req.params.id).then((user) => {
+        user.firstName = req.body.firstName;
+        user.lastName = req.body.lastName;
+        user.userName = req.body.userName;
+        user.password = req.body.password;
+        user.save().then(() => {
+            res.json("User Updated");
+        }).catch((err) => {
+            console.log(err);
+        })
     }).catch((err) => {
         console.log(err);
     })

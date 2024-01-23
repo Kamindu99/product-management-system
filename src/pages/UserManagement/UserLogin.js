@@ -16,7 +16,7 @@ function UserLogin() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/user-management/login', user).then((res) => {
+        axios.post('http://localhost:8000/api/user-management/login', user).then((res) => {
             if (res.data.success) {
                 alert("Login Success");
                 setUser(initUserDetails);
