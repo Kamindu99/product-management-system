@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
             const token = req.headers.authorization.split(" ")[1]; // "Bearer token"
             if (token === null) {
                 return res.status(401).json({
-                    message: "Auth failed"
+                    message: "Authentication failed"
                 })
             }
             const decoded = jwt.verify(token, 'abcd1234');
@@ -14,12 +14,12 @@ module.exports = (req, res, next) => {
             next();
         } catch (error) {
             return res.status(401).json({
-                message: "Auth failed"
+                message: "Authentication failed"
             })
         }
     } else {
         return res.status(401).json({
-            message: "Auth failed"
+            message: "Authentication failed"
         })
     }
 }
