@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const auth = require('./auth');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -25,7 +26,7 @@ app.listen(PORT, () => {
 });
 
 const productRoute = require('./routes/ProductRoutes');
-app.use("/product", productRoute);
+app.use("/product", auth, productRoute);
 
 const userRoute = require('./routes/UserRoutes');
 app.use("/api/user-management", userRoute);
