@@ -1,20 +1,4 @@
-.addProduct {}
-
 .addProduct form {
-    /* padding: 120px;
-    height: fit-content;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 8px solid #a86363;
-    outline: none;
-    top: 50%;
-    left: 50%; */
-
-
-
-
-
 
     width: 450px;
     padding: 30px;
@@ -28,17 +12,25 @@
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 }
 
+.addProduct {
+    background-image: url(C:\Users\Hp\Pictures\Users\download.jpeg);
+    background-size: 20%;
+}
 
-
-
-
-
-
-.addProduct h1 {
+.addProduct .header {
     text-align: center;
     background-color: aqua;
     padding: 25px;
+  
+    font-weight: bold;
+    font-size: 26px;
+
 }
 
+.addProduct .headerTitle {
+    text-align: center;
+    /* background-color: aqua; */
+    padding: 25px;
+    display: none;
 
-
+}

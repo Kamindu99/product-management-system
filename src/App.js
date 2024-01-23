@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AddProduct from "./pages/ProductManagement/AddProduct/AddProduct";
 import UpdateProducts from "./pages/ProductManagement/UpdateProduct/UpdateProducts";
 import ProductList from "./pages/ProductManagement/ProductList/ProductList";
+import Home from "./pages/ProductManagement/Home/Home";
 function App() {
   return (
     <div >
@@ -15,6 +16,7 @@ function App() {
             <Route path="/product" element={<ProductList />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="update/:id" element={<UpdateProducts />} />
+            <Route path="/" element={< Home />}/>
 
           </Routes>
         </Router>

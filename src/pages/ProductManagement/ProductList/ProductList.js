@@ -18,9 +18,11 @@ function ProductList() {
         })
 
     }
+    
     useEffect(() => {
         getProducts()
     }, []);
+
     const handleDelete = (id) => {
         axios.delete(`http://localhost:8000/product/delete/${id}`).then(res => {
             alert("product deleted");

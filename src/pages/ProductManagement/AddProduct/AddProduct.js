@@ -40,7 +40,10 @@ function AddProduct() {
         <div className='addProduct'>
             <div>
                 <form onSubmit={sendData}>
-                    <h1><u>Add products</u></h1>
+                    <h1 className="header"><u>Add products</u></h1>
+
+                    <h1 className="headerTitle"><u>Enter details</u></h1>
+
                     <div className="mb-3">
                         <label for="productCode" className="form-label">productCode</label>
                         <input type="text" className="form-control" id="productCode" onChange={(e) => {
@@ -81,6 +84,7 @@ function AddProduct() {
                 </form>
             </div>
         </div>
+
     )
 }
 

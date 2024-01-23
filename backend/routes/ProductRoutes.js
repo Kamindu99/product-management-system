@@ -14,8 +14,6 @@ router.post("/add", async (req, res) => {
 router.route("/display").get((req, res) => {
     Product.find().then((product) => {
         res.json(product);
-
-        console.log(res);
     }).catch((err) => {
         console.log(err);
 

@@ -1,0 +1,41 @@
+.home .homeimage {
+    background-image: url(https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg?w=900&t=st=1706016788~exp=1706017388~hmac=6df096eb95047c6a36889d275e01ccf8268b4f4ae514326c3ffb21540766e04e);
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    margin-bottom: 15px;
+
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #7b8f97;
+    color: black;
+    font-size: 16px;
+    padding: 16px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 100px
+}
+
+.container .btn:hover {
+
+    background-color: black;
+    color: white;
+
+}
