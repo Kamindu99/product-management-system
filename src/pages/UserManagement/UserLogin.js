@@ -51,7 +51,7 @@ function UserLogin() {
                                 <div class="mb-3">
                                     <input type="password" class="form-control" id="password" placeholder="Password" onChange={handleChange} />
                                 </div>
-                                <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Login</button></div>
+                                <div class="text-center"><button type="submit" class="btn btn-success px-5 mb-5 w-100">Login</button></div>
                                 <div id="emailHelp" class="form-text text-center mb-5 text-dark">
                                     Not Registered?
                                     <a href="/user-management/register" class="text-dark fw-bold"> Create an Account</a>
