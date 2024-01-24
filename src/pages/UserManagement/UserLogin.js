@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import MessageDialog from '../../components/AlertBox/AlertBox';
 
 function UserLogin() {
 
@@ -10,6 +11,14 @@ function UserLogin() {
 
     const [user, setUser] = useState(initUserDetails);
 
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
+
     const handleChange = (e) => {
         setUser({ ...user, [e.target.id]: e.target.value });
     }
@@ -18,14 +27,13 @@ function UserLogin() {
         e.preventDefault();
         axios.post('http://localhost:8000/api/user-management/login', user).then((res) => {
             if (res.data.success) {
-                alert("Login Success");
+                showMessageDialog("Success", "Successfully Log In", "/dashboard");
                 localStorage.setItem('token', res.data.accessToken);
                 localStorage.setItem('refreshtoken', res.data.refreshToken);
                 localStorage.setItem('name', res.data.firstName);
                 setUser(initUserDetails);
-                window.location = "/user-management/dashboard";
             } else {
-                alert("Login Failed");
+                showMessageDialog("Error", "Login Failed", "reload");
             }
         })
             .catch((err) => {
@@ -62,6 +70,7 @@ function UserLogin() {
                     </div>
                 </div>
             </div>
+            <MessageDialog {...messageData} />
         </div>
     )
 }

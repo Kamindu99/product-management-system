@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import axios from 'axios';
+import MessageDialog from '../AlertBox/AlertBox';
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
+
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -22,11 +32,10 @@ const Navbar = () => {
         }
         axios.post('http://localhost:8000/api/user-management/logout', refreshtoken).then((res) => {
             if (res.data.success) {
-                alert("Logout Success");
+                showMessageDialog("Success", "Successfully Log Out", "/user-management/login");
                 localStorage.clear();
-                window.location.replace("/user-management/login");
             } else {
-                alert("Login Failed");
+                showMessageDialog("Error", "Login Failed", '');
             }
         })
             .catch((err) => {
@@ -106,6 +115,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            <MessageDialog {...messageData} />
         </nav>
     );
 };
