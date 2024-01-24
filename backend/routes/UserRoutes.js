@@ -103,6 +103,39 @@ router.route("/:id").get((req, res) => {
     })
 })
 
+router.route("/get").post(async (req, res) => {
+    const token = req.body.token;
+    if (token == null) return res.sendStatus(401);
+
+    try {
+        const decodedUser = jwt.verify(token, '1234abcd');
+        const user = await User.findOne({ _id: decodedUser.id });
+
+        if (user) {
+            if (user.refreshToken == null || user.refreshToken == '') {
+                return res.status(403).json({
+                    message: "User already logged out. Invalid Refresh Token"
+                })
+            }
+            else {
+                if (token === user.refreshToken) {
+                    res.json({ success: true, user: user });
+                } else {
+                    return res.status(403).json({
+                        message: "Invalid Refresh Token"
+                    })
+                }
+            }
+        } else {
+            return res.status(403).json({
+                message: "Invalid Refresh Token"
+            })
+        }
+    } catch (err) {
+        res.sendStatus(403);
+    }
+});
+
 router.route("/:id").delete((req, res) => {
     User.findByIdAndDelete(req.params.id).then(() => {
         res.json("User Deleted");

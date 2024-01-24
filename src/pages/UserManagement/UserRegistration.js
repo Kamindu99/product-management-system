@@ -15,19 +15,26 @@ function UserRegistration() {
 
     const [user, setUser] = useState(initUserDetails);
 
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
+
     const handleChange = (e) => {
         setUser({ ...user, [e.target.id]: e.target.value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/user-management', user).then((res) => {
-            alert("User Created Successfully");
+        axios.post('http://localhost:8000/api/user-management', user).then((res) => {
+            showMessageDialog("Success", "User Created Successfully", "/user-management/login");
             setUser(initUserDetails);
-            window.location = "/user-management/login";
         })
             .catch((err) => {
-                console.log(err);
+                showMessageDialog("Success", err, "reload");
             });
     }
 
