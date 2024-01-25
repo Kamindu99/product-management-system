@@ -94,7 +94,6 @@ router.route("/logout").post(async (req, res) => {
     }
 });
 
-
 router.route("/:id").get((req, res) => {
     User.findById(req.params.id).then((user) => {
         res.json(user);

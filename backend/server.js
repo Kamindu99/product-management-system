@@ -30,3 +30,6 @@ app.use("/product", auth, productRoute);
 
 const userRoute = require('./routes/UserRoutes');
 app.use("/api/user-management", userRoute);
+
+const inquiryRoute = require('./routes/InquiryRoutes');
+app.use("/api/inquiry", auth, inquiryRoute);
