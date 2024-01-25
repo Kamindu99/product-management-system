@@ -34,6 +34,7 @@ router.route("/login").post(async (req, res) => {
 
             res.json({
                 success: true,
+                id: users[0].id,
                 firstName: users[0].firstName,
                 lastName: users[0].lastName,
                 accessToken: accessToken,
