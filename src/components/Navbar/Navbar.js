@@ -73,6 +73,10 @@ const Navbar = () => {
                             <a href='/add' className={`nav-link me-3 nav-link-a-text `}>Add Product</a>
                         </li>
 
+                        <li className="nav-item">
+                            <a href='/inquiry/create' className={`nav-link me-3 nav-link-a-text `}>Inquiry</a>
+                        </li>
+
                         {localStorage.getItem('token') ?
                             <li className="nav-item dropdown" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                                 <a

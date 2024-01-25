@@ -6,6 +6,7 @@ import ProductList from "./pages/ProductManagement/ProductList/ProductList";
 import UserRegistration from "./pages/UserManagement/UserRegistration";
 import UserLogin from "./pages/UserManagement/UserLogin";
 import UserProfile from "./pages/UserManagement/UserProfile";
+import CreateInquiry from "./pages/InquiryManagement/CreateInquiry";
 
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
@@ -23,6 +24,8 @@ function App() {
             <Route path="/user-management/register" element={<UserRegistration />} />
             <Route path="/user-management/login" element={<UserLogin />} />
             <Route path="/user-management/user-profile" element={<UserProfile />} />
+
+            <Route path="/inquiry/create" element={<CreateInquiry />} />
           </Routes>
         </Router>
       </div>

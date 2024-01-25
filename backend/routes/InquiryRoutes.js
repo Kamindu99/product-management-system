@@ -6,7 +6,13 @@ router.post("/", async (req, res) => {
     const inquiry = new Inquiry(req.body);
     try {
         const savedInquiry = await inquiry.save();
-        res.json(savedInquiry);
+        res.json(
+            {
+                success: true,
+                message: "Successfully Created",
+                inquiry: savedInquiry
+            }
+        );
     } catch (err) {
         res.json({ message: err });
     }
