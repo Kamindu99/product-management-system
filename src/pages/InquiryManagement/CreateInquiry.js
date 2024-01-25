@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-
 import "./Inquiry.css"
 import MessageDialog from '../../components/AlertBox/AlertBox';
+import useAuthAPI from '../../components/Auth/AuthAPI';
 
 function CreateInquiry() {
 
@@ -25,24 +25,19 @@ function CreateInquiry() {
     const handleChange = (e) => {
         setInquiry({ ...inquiry, [e.target.id]: e.target.value });
     }
+    const postapiRequest = useAuthAPI('inquiry', inquiry, 'post');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/inquiry/',
-            inquiry,
-            {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+        postapiRequest()
+            .then((res) => {
+                if (res.data.success) {
+                    showMessageDialog("Success", "Successfully Created", "reload");
+                    setInquiry(initInquiryDetails);
+                } else {
+                    showMessageDialog("Error", "Inquiry Create Failed", "reload");
                 }
-            }
-        ).then((res) => {
-            if (res.data.success) {
-                showMessageDialog("Success", "Successfully Created", "reload");
-                setInquiry(initInquiryDetails);
-            } else {
-                showMessageDialog("Error", "Inquiry Create Failed", "reload");
-            }
-        })
+            })
             .catch((err) => {
                 showMessageDialog("Error", err.response?.data.message, "");
             });
@@ -82,12 +77,12 @@ function CreateInquiry() {
                                             <form onSubmit={handleSubmit}>
                                                 <div class="form-group">
                                                     <label>Subject</label>
-                                                    <input id='subject' type="text" class="form-control" onChange={handleChange} />
+                                                    <input required id='subject' type="text" class="form-control" onChange={handleChange} />
                                                 </div>
                                                 <br />
                                                 <div class="form-group mb-5">
                                                     <label >Message</label>
-                                                    <textarea id="message" class="form-control" rows="5" onChange={handleChange}></textarea>
+                                                    <textarea required id="message" class="form-control" rows="5" onChange={handleChange}></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-theme" style={{ width: '100%' }}>Submit</button>
 
