@@ -10,21 +10,24 @@ import Home from "./pages/ProductManagement/Home/Home";
 
 import UserRegistration from "./pages/UserManagement/UserRegistration";
 import UserLogin from "./pages/UserManagement/UserLogin";
+import Searchbar from "./components/SearchBar/Searchbar";
 
 function App() {
   return (
     <div >
       <Navbar />
+      <Searchbar />
       <div style={{ minHeight: '50vh' }}>
         <Router>
           <Routes>
             <Route path="/product" element={<ProductList />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="update/:id" element={<UpdateProducts />} />
-            <Route path="/" element={< Home />}/>
+            <Route path="/" element={< Home />} />
 
             <Route path="/user-management/register" element={<UserRegistration />} />
             <Route path="/user-management/login" element={<UserLogin />} />
+
           </Routes>
         </Router>
       </div>
