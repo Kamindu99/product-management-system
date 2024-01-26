@@ -4,25 +4,7 @@ import { Link } from 'react-router-dom';
 
 function ProductList() {
 
-
     const [product, setProducts] = useState([])
-
-    // function getProducts() {
-    //     axios.get(`http://localhost:8000/product/display`).then((res) => {
-
-    //         setProducts(res.data);
-
-    //     }).catch((err) => {
-    //         alert(err);
-    //         console.log(err);
-
-    //     })
-
-    // }
-
-
-
-
 
     function getProducts() {
         let token = localStorage.getItem('token');
@@ -44,11 +26,9 @@ function ProductList() {
         }
     }
 
-
     useEffect(() => {
         getProducts()
     }, []);
-
 
     const handleDelete = (id) => {
         axios.delete(`http://localhost:8000/product/delete/${id}`).then(res => {
@@ -61,13 +41,43 @@ function ProductList() {
         })
     }
 
+    const filterData = (products, searchkey) => {
+        const result = products.filter(
+            (product) =>
+                product.productName.toLowerCase().includes(searchkey) ||
+                product.productName.toUpperCase().includes(searchkey)
+        );
+        setProducts(result);
+    };
+
+    const handleSearchArea = (e) => {
+        const searchkey = e.currentTarget.value;
+        axios.get("http://localhost:8000/product/display",
+            {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+            .then((res) => {
+                filterData(res.data, searchkey);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     return (
         <div>
             <h5 style={{ textAlign: 'center', textDecoration: 'underline' }}>Product list</h5>
 
             <Link to="/add" className="btn btn-primary"  >Add new products</Link>
 
-
+            <div>
+                <input type="text" onChange={handleSearchArea} />
+                <button>search</button>
+            </div>
             <br></br>
             <br></br>
             <div className="row">
