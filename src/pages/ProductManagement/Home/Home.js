@@ -5,7 +5,7 @@ function Home() {
         <div className='home'>
 
             <div className="homeimage">
-                <div className="container">
+                <div className=".home .container">
                     <button class="btn">Add Product</button>
 
                 </div>
