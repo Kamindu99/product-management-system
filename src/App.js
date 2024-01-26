@@ -1,12 +1,13 @@
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import AddProduct from "./pages/ProductManagement/AddProduct/AddProduct";
-import UpdateProducts from "./pages/ProductManagement/UpdateProduct/UpdateProducts";
 import ProductList from "./pages/ProductManagement/ProductList/ProductList";
-import UserRegistration from "./pages/UserManagement/UserRegistration";
+import UpdateProducts from "./pages/ProductManagement/UpdateProduct/UpdateProducts";
+import Home from "./pages/ProductManagement/Home/Home";
+import CreateInquiry from "./pages/InquiryManagement/CreateInquiry";
 import UserLogin from "./pages/UserManagement/UserLogin";
 import UserProfile from "./pages/UserManagement/UserProfile";
-import CreateInquiry from "./pages/InquiryManagement/CreateInquiry";
+import UserRegistration from "./pages/UserManagement/UserRegistration";
 
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/product" element={<ProductList />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="update/:id" element={<UpdateProducts />} />
+            <Route path="/" element={< Home />} />
 
             <Route path="/user-management/register" element={<UserRegistration />} />
             <Route path="/user-management/login" element={<UserLogin />} />

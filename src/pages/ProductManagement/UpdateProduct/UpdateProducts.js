@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
+import './UpdateProduct.css';
+
 
 function UpdateProducts() {
 
@@ -57,57 +59,61 @@ function UpdateProducts() {
 
 
 
+        <div className="updateProduct">
 
 
-        <form onSubmit={update}>
+            <form onSubmit={update}>
+
+                <h1 className="header">Update products</h1>
+
+                <div class="mb-3">
 
 
-            <div class="mb-3">
+                    <label for="productCode" class="form-label"> Enter the  new productCode</label>
+                    <input type="text" class="form-control" id="productCode" onChange={(e) => {
+                        setProductCode(e.target.value)
+                    }}
+                        value={productCode}
+                    />
+                </div>
+                <div class="mb-3">
 
 
-                <label for="productCode" class="form-label">productCodee</label>
-                <input type="text" class="form-control" id="productCode" onChange={(e) => {
-                    setProductCode(e.target.value)
-                }}
-                    value={productCode}
-                />
-            </div>
-            <div class="mb-3">
+                    <label for="productName" class="form-label"> Enter the  new productName</label>
+                    <input type="text" class="form-control" id="productName" onChange={(e) => {
+                        setProductName(e.target.value)
+                    }}
+                        value={productName}
+                    />
+                </div>
 
 
-                <label for="productName" class="form-label">productName</label>
-                <input type="text" class="form-control" id="productName" onChange={(e) => {
-                    setProductName(e.target.value)
-                }}
-                    value={productName}
-                />
-            </div>
+                <div class="mb-3">
 
 
-            <div class="mb-3">
+                    <label for="price" class="form-label">  Enter the  new price</label>
+                    <input type="text" class="form-control" id="price" onChange={(e) => {
+                        setPrice(e.target.value)
+                    }}
+                        value={price}
+                    />
+                </div>
+                <div class="mb-3">
 
 
-                <label for="price" class="form-label">price</label>
-                <input type="text" class="form-control" id="price" onChange={(e) => {
-                    setPrice(e.target.value)
-                }}
-                    value={price}
-                />
-            </div>
-            <div class="mb-3">
+                    <label for="qty" class="form-label"> Enter the  new qty</label>
+                    <input type="text" class="form-control" id="qty" onChange={(e) => {
+                        setQty(e.target.value)
+                    }}
+                        value={qty}
+                    />
+                </div>
 
 
-                <label for="qty" class="form-label">qty</label>
-                <input type="text" class="form-control" id="qty" onChange={(e) => {
-                    setQty(e.target.value)
-                }}
-                    value={qty}
-                />
-            </div>
+                <button type="submit" class="btn btn-primary">update successful</button>
+            </form>
+        </div>
 
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
     )
 }
 
