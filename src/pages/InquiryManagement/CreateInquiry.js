@@ -34,6 +34,7 @@ function CreateInquiry() {
                 if (res.data.success) {
                     showMessageDialog("Success", "Inquiry Successfully Created", "reload");
                     setInquiry(initInquiryDetails);
+                    console.log(res.data);
                 } else {
                     showMessageDialog("Error", "Inquiry Create Failed", "reload");
                 }
