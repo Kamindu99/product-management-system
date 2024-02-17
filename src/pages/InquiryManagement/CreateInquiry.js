@@ -32,10 +32,10 @@ function CreateInquiry() {
         postapiRequest()
             .then((res) => {
                 if (res.data.success) {
-                    // showMessageDialog("Success", "Inquiry Successfully Created", "reload");
-                    //  setInquiry(initInquiryDetails);
+                    showMessageDialog("Success", "Inquiry Successfully Created", "reload");
+                    setInquiry(initInquiryDetails);
                 } else {
-                    //showMessageDialog("Error", "Inquiry Create Failed", "reload");
+                    showMessageDialog("Error", "Inquiry Create Failed", "reload");
                 }
             })
             .catch((err) => {
