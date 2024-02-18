@@ -72,9 +72,7 @@ const Navbar = () => {
                         <li className="nav-item">
                             <a href='/product/clientList' className={`nav-link me-3 nav-link-a-text `}>Product list Client</a>
                         </li>
-                        <li className="nav-item">
-                            <a className={`nav-link nav-link-a-text me-3 active`} href="/">Home</a>
-                        </li>
+
                         <li className="nav-item">
                             <a href='/product/addPayment' className={`nav-link me-3 nav-link-a-text `}>Payment</a>
                         </li>
