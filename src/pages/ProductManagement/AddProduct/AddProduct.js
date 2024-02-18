@@ -29,7 +29,8 @@ function AddProduct() {
             alert("product added");
 
 
-            window.location.replace("/product");
+            // window.location.replace("/product-management/product/list");
+               window.location.replace("/product-management/product/list");
 
         }).catch((err) => {
             alert(err);

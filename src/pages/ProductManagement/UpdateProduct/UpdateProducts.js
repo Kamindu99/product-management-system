@@ -31,7 +31,7 @@ function UpdateProducts() {
                 setPrice("");
                 setQty("");
 
-                window.location.replace(`/product`);
+             window.location.replace(`/product-management/product/list`);
             }).catch((err) => {
                 console.log(err);
                 alert(err);
@@ -44,6 +44,7 @@ function UpdateProducts() {
             setProductName(res.data.response.productName);
             setPrice(res.data.response.price);
             setQty(res.data.response.qty);
+    
 
         }).catch((err) => {
             alert(err);
