@@ -31,7 +31,7 @@ function Searchbar() {
                 <input type="text" onChange={onChange} value={value} />
                 <button>search</button>
             </div>
-            {/* <div className="dropdown-content"> */}
+           
             <div className="template-container">
                 {
                     value &&

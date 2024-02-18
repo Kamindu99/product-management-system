@@ -2,7 +2,7 @@
 
     width: 450px;
     padding: 30px;
-    margin: 40px auto;
+    margin: auto;
     background: #FFF;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -14,7 +14,7 @@
 
 .addProduct {
     /* background-image: url(C:\Users\Hp\Pictures\Users\download.jpeg); */
-    background-size: 20%;
+
     background: linear-gradient(to right, rgb(250, 250, 122), white)
 }
 

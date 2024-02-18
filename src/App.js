@@ -8,19 +8,19 @@ import CreateInquiry from "./pages/InquiryManagement/CreateInquiry";
 import UserLogin from "./pages/UserManagement/UserLogin";
 import UserProfile from "./pages/UserManagement/UserProfile";
 import UserRegistration from "./pages/UserManagement/UserRegistration";
-
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div >
       <Navbar />
+
       <div style={{ minHeight: '50vh' }}>
         <Router>
           <Routes>
-            <Route path="/product" element={<ProductList />} />
-            <Route path="/add" element={<AddProduct />} />
-            <Route path="update/:id" element={<UpdateProducts />} />
+            <Route path="/product-management/product/list" element={<ProductList />} />
+            <Route path="/product-management/product/add" element={<AddProduct />} />
+            <Route path="/product-management/product/update/:id" element={<UpdateProducts />} />
             <Route path="/" element={< Home />} />
 
             <Route path="/user-management/register" element={<UserRegistration />} />

@@ -12,12 +12,7 @@ function ProductList() {
             alert("You are not an Authorized User. Please sign in first.")
             window.location.replace("/user-management/login")
         } else {
-            axios.get('http://localhost:8000/product/display', {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                    'Content-Type': 'application/json'
-                }
-            }).then((res) => {
+            axios.get('http://localhost:8000/product/display').then((res) => {
                 setProducts(res.data);
             }).catch((err) => {
                 alert(err);
@@ -69,20 +64,25 @@ function ProductList() {
     };
 
     return (
-        <div>
+        <div className='container'>
             <h5 style={{ textAlign: 'center', textDecoration: 'underline' }}>Product list</h5>
 
-            <Link to="/add" className="btn btn-primary"  >Add new products</Link>
+            <Link to="/product-management/product/add" className="btn btn-primary"  >Add new products</Link>
 
-            <div>
-                <input type="text" onChange={handleSearchArea} />
+            <div style={{
+                display: "inline-block",
+                float: 'right',
+                marginRight: '3%'
+            }}>
+                <input type="text" onChange={handleSearchArea} placeholder='Search by name' />
                 <button>search</button>
             </div>
+
             <br></br>
             <br></br>
-            <div className="row">
+            <div className="row ">
                 {product.map((product, index) => (
-                    <div key={product._id} className="col-sm-2 mb-3">
+                    <div key={product._id} className="col-sm-3 mb-3">
                         <div className="card">
                             <img src={product.imageUrl} alt={product.productName} className="card-img-top" />
 
@@ -94,7 +94,7 @@ function ProductList() {
 
                                     <strong>Qty:</strong> {product.qty}
                                 </p>
-                                <Link to={`/update/${product._id}`} className="btn btn-success me-2">
+                                <Link to={`/product-management/product/update/${product._id}`} className="btn btn-success me-2">
                                     Update
                                 </Link>
                                 <button
