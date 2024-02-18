@@ -8,14 +8,17 @@ import CreateInquiry from "./pages/InquiryManagement/CreateInquiry";
 import UserLogin from "./pages/UserManagement/UserLogin";
 import UserProfile from "./pages/UserManagement/UserProfile";
 import UserRegistration from "./pages/UserManagement/UserRegistration";
+import ClientSideProductList from "./pages/ClientSideProductList/ClientSideProductList";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div >
+    // to make it fit ot the page use the 1st div
+    <div > 
+      
       <Navbar />
 
-      <div style={{ minHeight: '50vh' }}>
+      <div >
         <Router>
           <Routes>
             <Route path="/product-management/product/list" element={<ProductList />} />
@@ -26,7 +29,7 @@ function App() {
             <Route path="/user-management/register" element={<UserRegistration />} />
             <Route path="/user-management/login" element={<UserLogin />} />
             <Route path="/user-management/user-profile" element={<UserProfile />} />
-
+            <Route path="/product/clientList" element={<ClientSideProductList />} />
             <Route path="/inquiry/create" element={<CreateInquiry />} />
           </Routes>
         </Router>
