@@ -10,12 +10,12 @@ import UserProfile from "./pages/UserManagement/UserProfile";
 import UserRegistration from "./pages/UserManagement/UserRegistration";
 import ClientSideProductList from "./pages/ClientSideProductList/ClientSideProductList";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-
+import Payment from "./pages/Payment/Payment";
 function App() {
   return (
     // to make it fit ot the page use the 1st div
-    <div > 
-      
+    <div >
+
       <Navbar />
 
       <div >
@@ -31,6 +31,7 @@ function App() {
             <Route path="/user-management/user-profile" element={<UserProfile />} />
             <Route path="/product/clientList" element={<ClientSideProductList />} />
             <Route path="/inquiry/create" element={<CreateInquiry />} />
+            <Route path="/product/addPayment" element={<Payment />} />
           </Routes>
         </Router>
       </div>
