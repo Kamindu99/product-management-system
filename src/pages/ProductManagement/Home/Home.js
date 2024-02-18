@@ -7,8 +7,7 @@ function Home() {
 
             <div className="homeimage">
                 <div className=".home .container">
-                    <button class="btn">Admin</button>
-                    <button class="btn">User</button>
+
                     <Carousel />
                 </div>
             </div>
