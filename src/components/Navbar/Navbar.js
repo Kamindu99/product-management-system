@@ -70,6 +70,10 @@ const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
+                            <a href='/product/clientList' className={`nav-link me-3 nav-link-a-text `}>Product list Client</a>
+                        </li>
+
+                        <li className="nav-item">
                             <a href='/inquiry/create' className={`nav-link me-3 nav-link-a-text `}>Inquiry</a>
                         </li>
 
