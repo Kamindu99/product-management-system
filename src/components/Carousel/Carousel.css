@@ -1,0 +1,15 @@
+.carousel container {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+    padding: 0;
+
+
+}
+
+.carousel {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+
+}

@@ -66,15 +66,15 @@ const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <a href='/product' className={`nav-link me-3 nav-link-a-text `}>Products</a>
+                            <a href='/product-management/product/list' className={`nav-link me-3 nav-link-a-text `}>Products</a>
                         </li>
 
                         <li className="nav-item">
-                            <a href='/add' className={`nav-link me-3 nav-link-a-text `}>Add Product</a>
+                            <a href='/product/clientList' className={`nav-link me-3 nav-link-a-text `}>Product list Client</a>
                         </li>
 
                         <li className="nav-item">
-                            <a href='/inquiry/create' className={`nav-link me-3 nav-link-a-text `}>Inquiry</a>
+                            <a href='/product/addPayment' className={`nav-link me-3 nav-link-a-text `}>Payment</a>
                         </li>
 
                         {localStorage.getItem('token') ?

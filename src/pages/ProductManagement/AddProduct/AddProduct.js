@@ -29,7 +29,8 @@ function AddProduct() {
             alert("product added");
 
 
-            window.location.replace("/product");
+            // window.location.replace("/product-management/product/list");
+               window.location.replace("/product-management/product/list");
 
         }).catch((err) => {
             alert(err);
@@ -40,8 +41,9 @@ function AddProduct() {
 
     return (
         <div className='addProduct'>
-            <div>
-                <form onSubmit={sendData}>
+            <div className='container ' >
+                <br />
+                <form onSubmit={sendData} >
                     <h1 className="header"><u>Add products</u></h1>
 
                     <h1 className="headerTitle"><u>Enter details</u></h1>
@@ -84,6 +86,7 @@ function AddProduct() {
 
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                <br />
             </div>
         </div>
 
