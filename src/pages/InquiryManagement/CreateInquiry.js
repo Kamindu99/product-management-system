@@ -27,7 +27,22 @@ function CreateInquiry() {
     }
     const postapiRequest = useAuthAPI('inquiry', inquiry, 'post');
 
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        postapiRequest()
+            .then((res) => {
+                if (res.data.success) {
+                    showMessageDialog("Success", "Inquiry Successfully Created", "reload");
+                    setInquiry(initInquiryDetails);
+                    console.log(res.data);
+                } else {
+                    showMessageDialog("Error", "Inquiry Create Failed", "reload");
+                }
+            })
+            .catch((err) => {
+                showMessageDialog("Error", err.response?.data.message, "");
+            });
+    }
 
     return (
         <div className='inquiry'>
