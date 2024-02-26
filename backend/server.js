@@ -26,7 +26,7 @@ app.listen(PORT, () => {
 });
 
 const productRoute = require('./routes/ProductRoutes');
-app.use("/product", auth, productRoute);
+app.use("/product", productRoute);
 
 const userRoute = require('./routes/UserRoutes');
 app.use("/api/user-management", userRoute);
